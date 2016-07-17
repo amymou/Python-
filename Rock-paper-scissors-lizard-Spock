@@ -1,7 +1,6 @@
-# Testing template for name_to_number()
 
 ###################################################
-# Copy and paste your definition of name_to_number() here
+# Definition of name_to_number() 
 
 def name_to_number(name):
     if(name == "rock"):
