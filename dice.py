@@ -34,6 +34,8 @@ class Die:
   
   def __repr__(self):
     return str(self.value)
+
+#roll a six side dice six times
   
 class D6(Die):
   def __init__(self, D6value=0):
