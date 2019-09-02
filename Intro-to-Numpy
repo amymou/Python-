@@ -1,0 +1,227 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# # Introduction to Numpy
+# Learning NumPy!
+
+# In[1]:
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+np.__version__
+
+
+# ## Differences between lists and NumPy Arrays
+# * An array's size is immutable.  You cannot append, insert or remove elements, like you can with a list.
+# * All of an array's elements must be of the same [data type](https://docs.scipy.org/doc/numpy-1.14.0/user/basics.types.html).
+# * A NumPy array behaves in a Pythonic fashion.  You can `len(my_array)` just like you would assume.
+
+# In[2]:
+
+
+gpas_as_list = [4.0, 3.286, 3.5]
+
+
+# In[3]:
+
+
+# Can have elements appended to it
+gpas_as_list.append(4.0)
+# Can have multiple datatypes in it.
+gpas_as_list.insert(1, "Whatevs")
+# Can have items removed
+gpas_as_list.pop(1)
+
+
+# In[4]:
+
+
+gpas_as_list
+
+
+# In[5]:
+
+
+gpas = np.array(gpas_as_list)
+
+
+# In[6]:
+
+
+gpas.dtype
+
+
+# In[7]:
+
+
+gpas.itemsize
+
+
+# In[8]:
+
+
+gpas.size
+
+
+# In[9]:
+
+
+len(gpas)
+
+
+# In[10]:
+
+
+gpas.nbytes
+
+
+# ## Multidimensional Arrays
+# * The data structure is actually called `ndarray`, representing any **n**umber of **d**imensions
+# * Arrays can have multiple dimensions, you declare them on creation
+# * Dimensions help define what each element in the array represents.  A two dimensional array is just an array of arrays
+# * **Rank** defines how many dimensions an array contains 
+# * **Shape** defines the length of each of the array's dimensions
+# * Each dimension is also referred to as an **axis**, and they are zero-indexed. Multiples are called **axes**.
+# * A 2d array is AKA **matrix**.
+
+# In[11]:
+
+
+students_gpas = np.array([
+    [4.0, 3.286, 3.5, 4.0],
+    [3.2, 3.8, 4.0, 4.0],
+    [3.96, 3.92, 4.0, 4.0]
+], np.float16)
+students_gpas
+
+
+# In[12]:
+
+
+students_gpas.ndim
+
+
+# In[13]:
+
+
+students_gpas.shape
+
+
+# In[14]:
+
+
+students_gpas.size
+
+
+# In[15]:
+
+
+len(students_gpas)
+
+
+# In[16]:
+
+
+students_gpas.itemsize
+
+
+# In[17]:
+
+
+students_gpas.itemsize * students_gpas.size
+
+
+# In[18]:
+
+
+get_ipython().run_line_magic('whos', 'ndarray')
+
+
+# In[19]:
+
+
+np.info(students_gpas)
+
+
+# In[20]:
+
+
+students_gpas[2]
+
+
+# In[21]:
+
+
+students_gpas[2][3]
+
+
+# In[22]:
+
+
+students_gpas
+
+
+# In[ ]:
+
+
+
+
+
+# ## Common Routines
+# * Common [mathematical](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.math.html) [routines](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.html) are exposed so the formula can be abstracted away.
+#     * [`mean`](https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.mean.html#numpy.mean) is a [statistics](https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.statistics.html) routine used to calculate the average.
+# * Reduction functions take a dimension and collapse it into a single value.
+#     * These functions define an axis parameter, and you should remember that the function works across the dimension.
+#  
+
+# In[23]:
+
+
+students_gpas.mean()
+
+
+# In[24]:
+
+
+students_gpas.mean(axis=0)
+
+
+# In[25]:
+
+
+plt.boxplot(students_gpas.T)
+plt.plot()
+
+
+# ## About data types
+# * By choosing the proper [data type](https://docs.scipy.org/doc/numpy-1.14.0/user/basics.types.html) you can greatly reduce the size required to store objects
+# * Data types are maintained by wrapping values in a [scalar representation](https://docs.scipy.org/doc/numpy-1.14.0/reference/arrays.scalars.html)
+# * `np.zeros` is a handy way to create an empty array filled with zeros.
+
+# In[26]:
+
+
+study_minutes = np.zeros(100, np.uint16)
+study_minutes
+
+
+# In[27]:
+
+
+get_ipython().run_line_magic('whos', '')
+
+
+# In[28]:
+
+
+60 * 24
+
+
+# In[29]:
+
+
+study_minutes[0] = 150
+
+
+# In[30]:
