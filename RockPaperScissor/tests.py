@@ -26,7 +26,7 @@ class MoveTests(unittest.TestCase):
       self.assertGreater(self.paper, self.scissors)
       
   def test_paper_worse_than_scissors(self):
-      self.asertLess(self.paper, self.scissors)
+      self.assertLess(self.paper, self.scissors)
       
 if __name__ =='__main__':
    unittest.main()
